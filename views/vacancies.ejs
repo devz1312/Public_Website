@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available CA Industrial Training Vacancies</title>
+    <style>
+
+        /* Basic reset for better cross-browser consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Container for the entire page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page title */
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2C3E50;
+}
+
+/* Flexbox to handle vacancies layout */
+.vacancies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual vacancy cards */
+.vacancy-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(33% - 20px); /* Adjust card size */
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Hover effect to lift the card */
+.vacancy-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Vacancy details */
+.company-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2980B9;
+    margin-bottom: 10px;
+}
+
+.department,
+.position,
+.date-posted {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Apply button styling */
+.apply-button {
+    display: inline-block;
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #2ecc71;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .vacancy-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vacancy-card {
+        width: 100%;
+    }
+}
+
+/* General container styling */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Beautified Navbar styling */
+.navbar {
+    background-color: #34495E; /* Darker background for a professional look */
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif; /* Modern and clean font */
+    font-weight: 600;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: #ecf0f1; /* Light color for the logo text */
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+.nav-links a:hover {
+    background-color: #1ABC9C; /* Highlight on hover */
+    color: white;
+}
+
+/* Responsive Navbar: Stack links vertically on smaller screens */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* Vacancy list styling */
+.vacancy-card {
+    background-color: #F9F9F9;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+    </style> <!-- Link to your CSS file -->
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo-link"><h1>CA Industrial Training</h1></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/" class="btn">Logout</a></li>
+            
+        </ul>
+    </div>
+</nav>
+    <div class="container">
+        <h1 class="page-title">Available Vacancies</h1>
+
+        <div class="vacancies-list">
+            <% vacancies.forEach(vacancy => { %>
+                <div class="vacancy-card">
+                    <h2 class="company-name"><%= vacancy.companyName %></h2>
+                    <p class="department"><strong>Department:</strong> <%= vacancy.department %></p>
+                    <p class="position"><strong>Position:</strong> <%= vacancy.position %></p>
+                    <p class="date-posted"><strong>Date of Posting:</strong> <%= vacancy.dateOfPosting.toDateString() %></p>
+                    <a href="<%= vacancy.jobLink %>" class="apply-button" target="_blank">Apply Now</a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
